@@ -10,8 +10,6 @@ import BooksPage from './pages/BooksPage';
 import CategoriesPage from './pages/CategoriesPage';
 import './App.css';
 
-console.log(<booksPage />);
-
 const App = () => (
   <Router>
     <header>
