@@ -6,9 +6,12 @@ import {
   Link,
 } from 'react-router-dom';
 
-import BooksPage from './pages/BooksPage';
-import CategoriesPage from './pages/CategoriesPage';
+import BooksPage from './components/BooksPage';
+import CategoriesPage from './components/CategoriesPage';
 import './App.css';
+
+const sampleList = [{ id: 1, title: 'Great Circle', author: 'Maggie Shipstead' },
+  { id: 2, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald' }];
 
 const App = () => (
   <Router>
@@ -24,7 +27,7 @@ const App = () => (
       </nav>
     </header>
     <Routes>
-      <Route path="/" element={<BooksPage />} />
+      <Route path="/" element={<BooksPage bookList={sampleList} />} />
       <Route path="/categories" element={<CategoriesPage />} />
 
     </Routes>

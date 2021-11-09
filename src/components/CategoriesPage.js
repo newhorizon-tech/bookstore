@@ -1,5 +1,7 @@
 const CategoriesPage = () => (
-  <h1> Categories </h1>
+  <div>
+    <h1> Under Construction </h1>
+  </div>
 );
 
 export default CategoriesPage;
