@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Book from './Book';
 
 const BooksPage = (props) => {
@@ -8,14 +9,17 @@ const BooksPage = (props) => {
       <ul>
         {bookList.map((book) => <Book key={book.id} book={book} />)}
       </ul>
-      <form>
-       <input placeholder="Book Title">
-       <input placeholder="Book Title">
-       <button> Add Book </button>
-
+      <form id="add-book-form">
+        <input placeholder="Book Title" />
+        <input placeholder="Book Author" />
+        <button type="submit"> Add Book </button>
       </form>
     </div>
   );
+};
+
+BooksPage.propTypes = {
+  bookList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default BooksPage;
