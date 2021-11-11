@@ -1,25 +1,33 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
+import { addBook } from '../redux/books/books';
 
-const BooksPage = (props) => {
-  const { bookList } = props;
+const BooksPage = () => {
+  const dispatch = useDispatch();
+  const submitForm = (e) => {
+    e.preventDefault();
+    const title = e.target.querySelector('#input-title');
+    const author = e.target.querySelector('#input-author');
+    const data = { title: title.value, author: author.value };
+    title.value = '';
+    author.value = '';
+    dispatch(addBook(data));
+  };
+  const bookList = useSelector((state) => state.books);
+
   return (
     <div>
       <h1> Books </h1>
       <ul>
         {bookList.map((book) => <Book key={book.id} book={book} />)}
       </ul>
-      <form id="add-book-form">
-        <input placeholder="Book Title" />
-        <input placeholder="Book Author" />
+      <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
+        <input id="input-title" placeholder="Book Title" />
+        <input id="input-author" placeholder="Book Author" />
         <button type="submit"> Add Book </button>
       </form>
     </div>
   );
-};
-
-BooksPage.propTypes = {
-  bookList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default BooksPage;
