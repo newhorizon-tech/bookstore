@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import Book from './Book';
 import { addBook } from '../redux/books/books';
 
@@ -8,7 +9,11 @@ const BooksPage = () => {
     e.preventDefault();
     const title = e.target.querySelector('#input-title');
     const author = e.target.querySelector('#input-author');
-    const data = { title: title.value, author: author.value };
+    const data = {
+      id: uuidv4(),
+      title: title.value,
+      author: author.value,
+    };
     title.value = '';
     author.value = '';
     dispatch(addBook(data));
