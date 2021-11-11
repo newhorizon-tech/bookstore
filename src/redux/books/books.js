@@ -12,11 +12,27 @@ const bookSlice = createSlice(
     initialState: [],
     reducers: {
       addBook: (state, action) => [...current(state), { ...action.payload }],
-      removeBook: (state, action) => current(state).filter((b) => b.id !== action.payload),
+      removeBook: (state, action) => current(state).filter((b) => b.item_id !== action.payload),
       fetchBooks: (state, action) => action.payload,
     },
   },
 );
+
+const removeBook = (id) => {
+  const removeBookThunk = async (dispatch) => {
+    const response = await fetch(`${url}/${id}`, {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const msg = await response;
+    if (msg.status) {
+      dispatch({ type: 'books/removeBook', payload: id });
+    }
+  };
+  return removeBookThunk;
+};
 
 const saveBook = (book) => {
   const saveBookThunk = async (dispatch) => {
@@ -28,8 +44,9 @@ const saveBook = (book) => {
       body: JSON.stringify(book),
     });
     const msg = await response;
-    console.log(msg);
-    dispatch({ type: 'books/addBook', payload: book });
+    if (msg.status) {
+      dispatch({ type: 'books/addBook', payload: book });
+    }
   };
   return saveBookThunk;
 };
@@ -47,7 +64,6 @@ const fetchBooks = async (dispatch) => {
   dispatch({ type: 'books/fetchBooks', payload: bookList });
 };
 
-export { saveBook, fetchBooks };
+export { saveBook, removeBook, fetchBooks };
 
-export const { addBook, removeBook } = bookSlice.actions;
 export default bookSlice.reducer;

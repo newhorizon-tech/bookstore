@@ -19,7 +19,6 @@ const BooksPage = () => {
     dispatch(saveBook(data));
   };
   const bookList = useSelector((state) => state.books);
-  console.log(bookList);
   return (
     <div>
       <h1> Books </h1>
