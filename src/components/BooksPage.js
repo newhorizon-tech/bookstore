@@ -29,7 +29,7 @@ const BooksPage = () => {
         <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
           <input id="input-title" placeholder="Book Title" />
           <input id="input-category" placeholder="Category" />
-          <button type="submit"> ADD BOOK </button>
+          <button id="form-button" type="submit"> ADD BOOK </button>
         </form>
       </div>
     </div>

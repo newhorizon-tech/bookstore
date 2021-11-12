@@ -26,14 +26,13 @@ nav {
   border: var(--pinkish-grey) solid 1px;
   margin: 0 0 2.375rem;
   padding: 1.438rem 6.188rem 1.688rem 6.25rem;
-  background-color: va;
+  background-color: var(--white);
 
   #main-logo {
     user-select: none;
-    width: 15rem;
     height: 2.313rem;
     margin: 0.375rem 2.938rem 0.125rem 0;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 1.875rem;
     font-weight: bold;
     color: var(--azure);
@@ -44,7 +43,7 @@ nav {
     height: 1rem;
     margin: 1.125rem 2.563rem 0.688rem 0;
     text-decoration: none;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 0.813rem;
     letter-spacing: 1.9px;
     color: var(--black);
@@ -96,7 +95,7 @@ nav {
     .book-category {
       height: 1.125rem;
       opacity: 0.5;
-      font-family: Montserrat;
+      font-family: Montserrat, sans-serif;
       font-size: 14px;
       font-weight: bold;
       color: var(--black);
@@ -104,7 +103,7 @@ nav {
 
     .book-title {
       height: 29px;
-      font-family: RobotoSlab;
+      font-family: RobotoSlab, sans-serif;
       font-size: 22px;
       font-weight: bold;
       letter-spacing: -0.2px;
@@ -119,7 +118,7 @@ nav {
         background-color: var(--white);
         border: none;
         height: 1.188rem;
-        font-family: RobotoSlab;
+        font-family: RobotoSlab, sans-serif;
         font-size: 0.875rem;
         font-weight: 300;
         color: #4386bf;
@@ -154,7 +153,7 @@ nav {
   margin-left: auto;
   margin-right: 5rem;
 
-  button {
+  .chapter-button {
     border: none;
     width: 10rem;
     height: 2.063rem;
@@ -162,10 +161,9 @@ nav {
     border-radius: 3px;
     background-color: var(--azure);
     color: white;
-    font-family: RobotoSlab;
+    font-family: RobotoSlab, sans-serif;
     font-size: 0.813rem;
     font-weight: 300;
-    // letter-spacing: 0.5px;
     text-align: center;
   }
 }
@@ -174,7 +172,7 @@ nav {
   margin-bottom: 0.438rem;
   height: 1.125rem;
   opacity: 0.5;
-  font-family: RobotoSlab;
+  font-family: RobotoSlab, sans-serif;
   font-size: 0.813rem;
   font-weight: 300;
   color: var(--black);
@@ -184,7 +182,7 @@ nav {
   margin-bottom: 1.438rem;
   width: 4.688rem;
   height: 1.313rem;
-  font-family: RobotoSlab;
+  font-family: RobotoSlab, sans-serif;
   font-size: 0.9rem;
   font-weight: 300;
   letter-spacing: -0.4px;
@@ -198,14 +196,14 @@ nav {
   h3 {
     height: 1.5rem;
     margin-bottom: 1.2rem;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 1.25rem;
     font-weight: bold;
     letter-spacing: -0.18px;
     color: #888;
   }
 
-  form{
+  form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -223,15 +221,15 @@ nav {
     }
 
     #input-category {
-      width: 15%
+      width: 15%;
     }
 
-    button {
-      border:none;
+    .form-button {
+      border: none;
       border-radius: 3px;
       background-color: var(--azure);
       width: 15%;
-      font-family: RobotoSlab;
+      font-family: RobotoSlab, sans-serif;
       font-size: 0.713rem;
       font-weight: bold;
       letter-spacing: 0.5px;
