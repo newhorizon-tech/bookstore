@@ -8,7 +8,7 @@ import {
 import Navbar from './components/Navbar';
 import BooksPage from './components/BooksPage';
 import CategoriesPage from './components/CategoriesPage';
-import './App.css';
+import './App.scss';
 
 const App = () => (
   <Router>
