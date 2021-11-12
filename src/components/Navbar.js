@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { GoPerson } from 'react-icons/go';
 
 const Navbar = () => (
   <nav id="navbar">
@@ -6,6 +7,10 @@ const Navbar = () => (
     <div className="nav-links">
       <Link to="/"> Books </Link>
       <Link to="/categories">Categories</Link>
+    </div>
+
+    <div id="icon-person">
+      <GoPerson />
     </div>
   </nav>
 );
