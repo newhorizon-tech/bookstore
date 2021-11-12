@@ -24,11 +24,14 @@ const BooksPage = () => {
       <ul id="book-list">
         {bookList.map((book) => <Book key={book.item_id} book={book} />)}
       </ul>
-      <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
-        <input id="input-title" placeholder="Book Title" />
-        <input id="input-category" placeholder="Category" />
-        <button type="submit"> Add Book </button>
-      </form>
+      <div id="newbook">
+        <h3> ADD NEW BOOK </h3>
+        <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
+          <input id="input-title" placeholder="Book Title" />
+          <input id="input-category" placeholder="Category" />
+          <button type="submit"> ADD BOOK </button>
+        </form>
+      </div>
     </div>
   );
 };
