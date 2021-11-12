@@ -3,9 +3,9 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
 } from 'react-router-dom';
 
+import Navbar from './components/Navbar';
 import BooksPage from './components/BooksPage';
 import CategoriesPage from './components/CategoriesPage';
 import './App.css';
@@ -13,15 +13,7 @@ import './App.css';
 const App = () => (
   <Router>
     <header>
-      <nav>
-        <h1>
-          Bookstore
-        </h1>
-        <div className="nav-links">
-          <Link to="/"> Books </Link>
-          <Link to="/categories">Categories</Link>
-        </div>
-      </nav>
+      <Navbar />
     </header>
     <Routes>
       <Route path="/" element={<BooksPage />} />
