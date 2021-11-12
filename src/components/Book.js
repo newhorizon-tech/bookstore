@@ -10,6 +10,7 @@ const Book = (props) => {
   const { book } = props;
   const dispatch = useDispatch();
   const progess = (Math.random() * 100).toFixed(1);
+  const chapter = Math.floor(Math.random() * 20);
   return (
     <li key={book.item_id} className="book-item">
       <div className="left-section">
@@ -33,8 +34,9 @@ const Book = (props) => {
         <CircularProgressbar value={progess} text={`${progess}%`} />
       </div>
       <div className="chapters">
-        Chapters
-        <button type="button"> Update Progress </button>
+        <span className="current-chapter">CURRENT CHAPTER</span>
+        <span className="chapter-value">{`Chapter ${chapter}`}</span>
+        <button className="chapter-button" type="button"> Update Progress </button>
       </div>
     </li>
   );
