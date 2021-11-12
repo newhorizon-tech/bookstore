@@ -7,14 +7,14 @@ const Book = (props) => {
   const { book } = props;
   const dispatch = useDispatch();
   return (
-    <li key={book.id}>
+    <li key={book.item_id}>
       <span>
-        {` ${book.title} `}
+        {` ${book.title}. `}
       </span>
       <span>
-        {`by ${book.author}`}
+        {` Category: ${book.category}`}
       </span>
-      <button type="button" onClick={() => dispatch(removeBook(book.id))}>
+      <button type="button" onClick={() => dispatch(removeBook(book.item_id))}>
         Remove Book
       </button>
     </li>
@@ -25,8 +25,8 @@ export default Book;
 
 Book.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.string,
+    item_id: PropTypes.string,
     title: PropTypes.string,
-    author: PropTypes.string,
+    category: PropTypes.string,
   }).isRequired,
 };
