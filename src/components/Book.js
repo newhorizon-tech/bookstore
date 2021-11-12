@@ -7,7 +7,7 @@ const Book = (props) => {
   const { book } = props;
   const dispatch = useDispatch();
   return (
-    <li key={book.item_id}>
+    <li key={book.item_id} className="book-item">
       <span>
         {` ${book.title}. `}
       </span>

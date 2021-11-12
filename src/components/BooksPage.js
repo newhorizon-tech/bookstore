@@ -21,7 +21,7 @@ const BooksPage = () => {
   const bookList = useSelector((state) => state.books);
   return (
     <div>
-      <ul>
+      <ul id="book-list">
         {bookList.map((book) => <Book key={book.item_id} book={book} />)}
       </ul>
       <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
