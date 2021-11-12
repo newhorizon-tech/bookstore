@@ -78,6 +78,8 @@ nav {
 
   .book-item {
     width: 75%;
+    display: flex;
+    align-items: center;
     list-style-type: none;
     height: 10.625rem;
     border-radius: 4px;
@@ -136,4 +138,13 @@ nav {
       }
     }
   }
+}
+
+.left-section {
+  width: 45%;
+}
+
+.progress-bar {
+  width: 4.25rem;
+  height: 4.25rem;
 }
