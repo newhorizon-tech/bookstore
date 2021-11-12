@@ -8,15 +8,21 @@ const Book = (props) => {
   const dispatch = useDispatch();
   return (
     <li key={book.item_id} className="book-item">
-      <span>
-        {` ${book.title}. `}
-      </span>
-      <span>
-        {` Category: ${book.category}`}
-      </span>
-      <button type="button" onClick={() => dispatch(removeBook(book.item_id))}>
-        Remove Book
-      </button>
+      <div className="text-info">
+        <span className="book-category">
+          {`${book.category}`}
+        </span>
+        <span className="book-title">
+          {`${book.title}`}
+        </span>
+      </div>
+      <div className="book-actions">
+        <button type="button"> Comments </button>
+        <button type="button" onClick={() => dispatch(removeBook(book.item_id))}>
+          Remove
+        </button>
+        <button type="button"> Edit</button>
+      </div>
     </li>
   );
 };

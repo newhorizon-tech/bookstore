@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=RobotoSlab');
 
 :root {
   --bubble-gum-pink: #ff5ab7;
@@ -83,5 +84,56 @@ nav {
     border: solid 1px var(--borderline);
     background-color: var(--white);
     margin: 0 0 0.938rem;
+
+    .text-info {
+      display: flex;
+      margin-top: 2rem;
+      margin-left: 1.688rem;
+      flex-direction: column;
+    }
+
+    .book-category {
+      height: 1.125rem;
+      opacity: 0.5;
+      font-family: Montserrat;
+      font-size: 14px;
+      font-weight: bold;
+      color: #121212;
+    }
+
+    .book-title {
+      height: 29px;
+      font-family: RobotoSlab;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: -0.2px;
+      color: #121212;
+    }
+
+    .book-actions {
+      margin-top: 2.5rem;
+      margin-left: 0.625rem;
+
+      button {
+        background-color: var(--white);
+        border: none;
+        height: 1.188rem;
+        font-family: RobotoSlab;
+        font-size: 0.875rem;
+        font-weight: 300;
+        color: #4386bf;
+        padding: 0 1.063rem;
+      }
+
+      button:hover {
+        color: var(--azure);
+      }
+
+
+      button:nth-child(even) {
+        border-left: 0.125rem solid var(--borderline);
+        border-right: 0.125rem solid var(--borderline);
+      }
+    }
   }
 }
