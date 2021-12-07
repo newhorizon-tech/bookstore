@@ -1,4 +1,5 @@
 import { createSlice, current } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 
 const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
 
@@ -35,17 +36,18 @@ const removeBook = (id) => {
 };
 
 const saveBook = (book) => {
+  const newBook = { item_id: uuidv4(), ...book };
   const saveBookThunk = async (dispatch) => {
     const response = await fetch(url, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(book),
+      body: JSON.stringify(newBook),
     });
     const msg = await response;
     if (msg.status) {
-      dispatch({ type: 'books/addBook', payload: book });
+      dispatch({ type: 'books/addBook', payload: newBook });
     }
   };
   return saveBookThunk;
