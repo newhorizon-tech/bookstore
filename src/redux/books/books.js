@@ -12,8 +12,9 @@ const bookSlice = createSlice(
     name: 'books',
     initialState: [],
     reducers: {
-      addBook: (state, action) => [...current(state), { id: uuidv4(), ...action.payload }],
-      removeBook: (state, action) => current(state).filter((b) => b.id !== action.payload),
+      addBook: (state, action) => [...current(state), { ...action.payload }],
+      removeBook: (state, action) => current(state).filter((b) => b.item_id !== action.payload),
+      fetchBooks: (state, action) => action.payload,
     },
   },
 );
@@ -35,17 +36,18 @@ const removeBook = (id) => {
 };
 
 const saveBook = (book) => {
+  const newBook = { item_id: uuidv4(), ...book };
   const saveBookThunk = async (dispatch) => {
     const response = await fetch(url, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(book),
+      body: JSON.stringify(newBook),
     });
     const msg = await response;
     if (msg.status) {
-      dispatch({ type: 'books/addBook', payload: book });
+      dispatch({ type: 'books/addBook', payload: newBook });
     }
   };
   return saveBookThunk;
