@@ -1,11 +1,7 @@
 import { createSlice, current } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
-const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
-
-const apiId = 'a1XVlmDaV1nrjtVqGql8';
-
-const url = `${baseUrl}/apps/${apiId}/books`;
+const url = 'https://bookstore-56a93-default-rtdb.europe-west1.firebasedatabase.app/books.json';
 
 const bookSlice = createSlice(
   {
@@ -56,14 +52,7 @@ const saveBook = (book) => {
 const fetchBooks = async (dispatch) => {
   const response = await fetch(url);
   const books = await response.json();
-  const bookList = Object.entries(books).map(([id, [book]]) => (
-    {
-      item_id: id,
-      title: book.title,
-      category: book.category,
-    }
-  ));
-  dispatch({ type: 'books/fetchBooks', payload: bookList });
+  dispatch({ type: 'books/fetchBooks', payload: books });
 };
 
 export { saveBook, removeBook, fetchBooks };
