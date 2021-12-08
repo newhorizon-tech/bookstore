@@ -75,7 +75,7 @@ nav {
 
   .book-item {
     min-width: 700px;
-    width: 75%;
+    width: 80%;
     display: flex;
     align-items: center;
     list-style-type: none;
@@ -86,8 +86,8 @@ nav {
     margin: 0 0 0.938rem;
 
     .text-info {
+      height: 100%;
       display: flex;
-      margin-top: 2rem;
       margin-left: 1.688rem;
       flex-direction: column;
     }
@@ -102,6 +102,8 @@ nav {
     }
 
     .book-title {
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
       height: 29px;
       font-family: RobotoSlab, sans-serif;
       font-size: 22px;
@@ -110,8 +112,15 @@ nav {
       color: var(--black);
     }
 
+    .book-author {
+      height: 1.188rem;
+      font-family: RobotoSlab;
+      font-size: 0.875rem;
+      color: #4386bf;
+    }
+
     .book-actions {
-      margin-top: 2.5rem;
+      margin-top: 1.313rem;
       margin-left: 0.625rem;
 
       button {
@@ -138,7 +147,7 @@ nav {
 }
 
 .left-section {
-  width: 45%;
+  width: 50%;
 }
 
 .progress-bar {
@@ -190,7 +199,7 @@ nav {
 }
 
 #newbook {
-  width: 75%;
+  width: 80%;
   margin: 1.2rem auto;
 
   h3 {

@@ -21,6 +21,9 @@ const Book = (props) => {
           <span className="book-title">
             {`${book.title}`}
           </span>
+          <span className="book-author">
+            {`${book.title}`}
+          </span>
         </div>
         <div className="book-actions">
           <button type="button"> Comments </button>
