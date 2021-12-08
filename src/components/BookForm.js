@@ -18,11 +18,14 @@ const BookForm = () => {
   };
 
   return (
-    <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
-      <input id="input-title" name="title" value={data.title} onChange={handleInput} placeholder="Book Title" />
-      <input id="input-category" name="category" value={data.category} onChange={handleInput} placeholder="Book Category" />
-      <button type="submit"> Add Book </button>
-    </form>
+    <div id="newbook">
+      <h3> ADD NEW BOOK </h3>
+      <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
+        <input id="input-title" name="title" value={data.title} onChange={handleInput} placeholder="Book Title" />
+        <input id="input-category" name="category" value={data.category} onChange={handleInput} placeholder="Book Category" />
+        <button id="form-button" type="submit"> Add Book </button>
+      </form>
+    </div>
   );
 };
 
