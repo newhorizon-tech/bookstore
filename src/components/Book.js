@@ -22,7 +22,7 @@ const Book = (props) => {
             {`${book.title}`}
           </span>
           <span className="book-author">
-            {`${book.title}`}
+            {`${book.author}`}
           </span>
         </div>
         <div className="book-actions">
@@ -50,6 +50,7 @@ export default Book;
 Book.propTypes = {
   book: PropTypes.shape({
     item_id: PropTypes.string,
+    author: PropTypes.string,
     title: PropTypes.string,
     category: PropTypes.string,
   }).isRequired,
