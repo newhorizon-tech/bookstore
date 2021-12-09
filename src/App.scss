@@ -114,7 +114,7 @@ nav {
 
     .book-author {
       height: 1.188rem;
-      font-family: RobotoSlab;
+      font-family: RobotoSlab, sans-serif;
       font-size: 0.875rem;
       color: #4386bf;
     }
@@ -229,8 +229,8 @@ nav {
       width: 40%;
     }
 
-    #input-author{
-      width: 20%
+    #input-author {
+      width: 20%;
     }
 
     #input-category {
