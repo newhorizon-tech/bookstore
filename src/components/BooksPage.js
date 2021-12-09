@@ -20,7 +20,7 @@ const BooksPage = () => {
     <div>
       <ul id="book-list">
         <Loader type="ThreeDots" visible={loading} color="#0290ff" />
-        {loading ? 'Loading' : ''}
+        <span id="loading">{loading ? 'Loading' : ''}</span>
         {bookList.map((book) => <Book key={book.item_id} book={book} />)}
       </ul>
       <BookForm />
