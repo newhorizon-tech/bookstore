@@ -7,7 +7,7 @@ const url = `${baseUrl}books.json`;
 const bookSlice = createSlice(
   {
     name: 'books',
-    initialState: { loading: true, value: [] },
+    initialState: { loading: true, modal: false, value: [] },
     reducers: {
       add: (state, action) => {
         const newState = { ...current(state) };
@@ -19,10 +19,18 @@ const bookSlice = createSlice(
         newState.value = newState.value.filter((b) => b.item_id !== action.payload);
         return newState;
       },
-      fetch: (state, action) => (
-        { ...current(state), value: action.payload }
-      ),
+      fetch: (state, action) => ({ ...current(state), value: action.payload }),
+      saveProgress: (state, action) => {
+        const { id, progressValue } = action.payload;
+        const newState = { ...current(state) };
+        const item = newState.value.find((b) => b.item_id === id);
+        newState.value = newState.value.filter((b) => b.item_id !== id);
+        newState.value = [...newState.value, { ...item, progress: progressValue }];
+        return newState;
+      },
       loaded: (state) => ({ ...current(state), loading: false }),
+      openModal: (state) => ({ ...current(state), modal: true }),
+      closeModal: (state) => ({ ...current(state), modal: false }),
     },
   },
 );
@@ -46,15 +54,15 @@ const removeBook = (id) => {
 const saveBook = (newBook) => {
   const saveBookThunk = async (dispatch) => {
     const response = await fetch(url, {
-      method: 'post',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(newBook),
     });
-    const msg = await response;
-    if (msg.status) {
-      dispatch({ type: 'books/add', payload: newBook });
+    const data = await response.json();
+    if (response.status) {
+      dispatch({ type: 'books/add', payload: { ...newBook, item_id: data.name } });
     }
   };
   return saveBookThunk;
@@ -63,11 +71,36 @@ const saveBook = (newBook) => {
 const fetchBooks = async (dispatch) => {
   const response = await fetch(url);
   const books = await response.json();
-  const bookList = Object.entries(books).map(([key, book]) => ({ ...book, item_id: key }));
-  await dispatch({ type: 'books/fetch', payload: bookList });
+  if (books !== null) {
+    const bookList = Object.entries(books).map(([key, book]) => ({ ...book, item_id: key }));
+    await dispatch({ type: 'books/fetch', payload: bookList });
+  }
   dispatch({ type: 'books/loaded' });
 };
 
-export { saveBook, removeBook, fetchBooks };
+const saveProgress = (newData) => {
+  const saveProgressThunk = async (dispatch) => {
+    const response = await fetch(`${baseUrl}/books/${newData.id}.json`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ progress: newData.progressValue }),
+    });
+    await response.json();
+    if (response.status) {
+      dispatch({ type: 'books/saveProgress', payload: newData });
+    }
+  };
+  return saveProgressThunk;
+};
+
+const openModal = (dispatch) => dispatch({ type: 'books/openModal' });
+
+const closeModal = (dispatch) => dispatch({ type: 'books/closeModal' });
+
+export {
+  saveBook, removeBook, fetchBooks, saveProgress, openModal, closeModal,
+};
 
 export default bookSlice.reducer;
