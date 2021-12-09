@@ -4,7 +4,10 @@ import { saveBook } from '../redux/books/books';
 
 const BookForm = () => {
   const dispatch = useDispatch();
-  const [data, setData] = useState({ title: '', author: '', category: '' });
+  const initial = {
+    title: '', author: '', category: '', progress: '0',
+  };
+  const [data, setData] = useState(initial);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -14,7 +17,7 @@ const BookForm = () => {
   const submitForm = (e) => {
     e.preventDefault();
     dispatch(saveBook(data));
-    setData({ title: '', author: '', category: '' });
+    setData(initial);
   };
 
   return (
