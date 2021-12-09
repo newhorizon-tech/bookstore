@@ -14,7 +14,7 @@ const BookForm = () => {
   const submitForm = (e) => {
     e.preventDefault();
     dispatch(saveBook(data));
-    setData({ title: '', category: '' });
+    setData({ title: '', author: '', category: '' });
   };
 
   return (
