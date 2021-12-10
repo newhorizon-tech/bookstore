@@ -33,6 +33,7 @@ const UpdateProgress = (props) => {
   const submitForm = (e) => {
     e.preventDefault();
     dispatch(saveProgress(data));
+    dispatch(closeModal);
   };
 
   return (

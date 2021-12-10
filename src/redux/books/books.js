@@ -89,7 +89,7 @@ const saveProgress = (newData) => {
     });
     await response.json();
     if (response.status) {
-      dispatch({ type: 'books/saveProgress', payload: newData });
+      await dispatch({ type: 'books/saveProgress', payload: newData });
     }
   };
   return saveProgressThunk;
