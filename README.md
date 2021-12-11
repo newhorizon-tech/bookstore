@@ -9,11 +9,13 @@ Bookstore is a Single Page Application built in React for bibliophiles
 ## Features
 
 - Add Books
-- Remove Books 
+- Remove Books
+- Update Reading Progress
 
-## Live Demo 
+## Live Demo
 
-[Live Demo Link](https://mystifying-babbage-84d2f3.netlify.app) 
+[Live Demo Link](https://mystifying-babbage-84d2f3.netlify.app)
+
 
 ## Built With
 
