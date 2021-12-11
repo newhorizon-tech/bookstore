@@ -7,7 +7,7 @@ const url = `${baseUrl}books.json`;
 const bookSlice = createSlice(
   {
     name: 'books',
-    initialState: { loading: true, modal: false, value: [] },
+    initialState: { loading: true, modal: { open: false, data: { id: '', progress: '' } }, value: [] },
     reducers: {
       add: (state, action) => {
         const newState = { ...current(state) };
@@ -21,16 +21,19 @@ const bookSlice = createSlice(
       },
       fetch: (state, action) => ({ ...current(state), value: action.payload }),
       saveProgress: (state, action) => {
-        const { id, progressValue } = action.payload;
+        const { id, progress } = action.payload;
         const newState = { ...current(state) };
-        const item = newState.value.find((b) => b.item_id === id);
-        newState.value = newState.value.filter((b) => b.item_id !== id);
-        newState.value = [...newState.value, { ...item, progress: progressValue }];
-        return newState;
+        const newValue = newState.value.map((b) => ((b.item_id === id) ? { ...b, progress } : b));
+        const endState = { ...newState, value: newValue };
+        return endState;
       },
       loaded: (state) => ({ ...current(state), loading: false }),
-      openModal: (state) => ({ ...current(state), modal: true }),
-      closeModal: (state) => ({ ...current(state), modal: false }),
+      openModal: (state, action) => (
+        { ...current(state), modal: { open: true, data: { ...action.payload } } }
+      ),
+      closeModal: (state) => (
+        { ...current(state), modal: { open: false, data: { id: '', progress: '' } } }
+      ),
     },
   },
 );
@@ -85,7 +88,7 @@ const saveProgress = (newData) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ progress: newData.progressValue }),
+      body: JSON.stringify({ progress: newData.progress }),
     });
     await response.json();
     if (response.status) {
@@ -95,7 +98,7 @@ const saveProgress = (newData) => {
   return saveProgressThunk;
 };
 
-const openModal = (dispatch) => dispatch({ type: 'books/openModal' });
+const openModal = (data) => (dispatch) => dispatch({ type: 'books/openModal', payload: data });
 
 const closeModal = (dispatch) => dispatch({ type: 'books/closeModal' });
 
