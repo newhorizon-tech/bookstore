@@ -29,7 +29,6 @@ const Popup = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log(data);
     dispatch(saveProgress(data));
     dispatch(closeModal);
   };
